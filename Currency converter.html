@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Currency Converter</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="app" class="container bg-light rounded-lg p-4" style="margin-top: 10%;">
+		<div class="row mb-4">
+			<div class="col-12 mb-4 text-center">
+				<h1><span class="text-primary">Naira - Dollar</span>||<span class="text-danger">Dollar - Naira</span> Currency Converter</h1>
+				<hr>
+			</div>
+			<!-- Naira inputbox -->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="amnt_n" class="font-weight-bold">Enter Amount(Naira):</label>
+					<input type="number" class="form-control" id="amnt_n" v-model="naira">
+				</div>
+			</div>
+			<!-- Dollar inputbox -->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="amnt_d" class="font-weight-bold">Enter Amount(Dollar):</label>
+					<input type="number" class="form-control" id="amnt_d" v-model="dollar">
+				</div>
+			</div>
+		</div>
+		<hr>
+		<p class="text-center small">&copy; Copyright</p>
+	</div>
+
+	<script>
+		var converter = new Vue({
+			el: "#app",
+			data: {
+				//code goes here
+				naira: 0,
+				dollar: 0
+			},
+			watch: {
+				//code goes here
+				naira(newval) {
+					this.dollar = newval / 360
+				},
+				dollar(newval) {
+					this.naira = newval * 360
+				}
+			}
+		})
+	</script>
+</body>
+</html>
